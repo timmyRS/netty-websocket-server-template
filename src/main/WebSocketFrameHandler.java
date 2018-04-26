@@ -15,6 +15,14 @@ public class WebSocketFrameHandler extends SimpleChannelInboundHandler<WebSocket
 		if(evt == WebSocketServerProtocolHandler.ServerHandshakeStateEvent.HANDSHAKE_COMPLETE)
 		{
 			// TODO: Handle the newly connected users
+			ctx.channel().closeFuture().addListener(new ChannelFutureListener()
+			{
+				@Override
+				public void operationComplete(ChannelFuture future) throws Exception
+				{
+					// TODO: Handle disconnected users
+				}
+			});
 		}
 	}
 
