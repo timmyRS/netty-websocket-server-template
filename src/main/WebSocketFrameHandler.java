@@ -1,5 +1,7 @@
 package main;
 
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
@@ -12,13 +14,14 @@ public class WebSocketFrameHandler extends SimpleChannelInboundHandler<WebSocket
 	public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception
 	{
 		super.userEventTriggered(ctx, evt);
+		//noinspection deprecation
 		if(evt == WebSocketServerProtocolHandler.ServerHandshakeStateEvent.HANDSHAKE_COMPLETE)
 		{
 			// TODO: Handle the newly connected users
 			ctx.channel().closeFuture().addListener(new ChannelFutureListener()
 			{
 				@Override
-				public void operationComplete(ChannelFuture future) throws Exception
+				public void operationComplete(ChannelFuture future)
 				{
 					// TODO: Handle disconnected users
 				}

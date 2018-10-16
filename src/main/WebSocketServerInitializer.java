@@ -1,6 +1,5 @@
 package main;
 
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -14,7 +13,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
 {
 	private final SslContext sslCtx;
 
-	public WebSocketServerInitializer(SslContext sslCtx)
+	WebSocketServerInitializer(SslContext sslCtx)
 	{
 		this.sslCtx = sslCtx;
 	}
