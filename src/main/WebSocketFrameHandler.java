@@ -34,8 +34,8 @@ public class WebSocketFrameHandler extends SimpleChannelInboundHandler<WebSocket
 	{
 		if(frame instanceof TextWebSocketFrame)
 		{
-			String rawdata = ((TextWebSocketFrame) frame).text();
 			// TODO: Handle user text
+			ctx.writeAndFlush(new TextWebSocketFrame(((TextWebSocketFrame) frame).text()));
 		}
 	}
 }
